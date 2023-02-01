@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+        agent {
+        docker {
+            image 'devops2022.azurecr.io/alpine-test'
+        }
+    }
     
     environment {
     KUBECONFIG = credentials('k8s_config')
