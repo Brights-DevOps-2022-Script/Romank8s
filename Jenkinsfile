@@ -15,7 +15,9 @@ pipeline {
 
         stage('build') {
             agent {
-                image ' gcr.io/cloud-builder/kubectl'
+                docker{
+                    image 'gcr.io/cloud-builder/kubectl'
+                }
             }
         }
 
