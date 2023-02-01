@@ -12,8 +12,8 @@ pipeline {
         
         stage('test') {
             steps {
-                sh "docker --version"
-                sh "kubectl version --short"
+                // sh "docker --version"
+                // sh "kubectl version --short"
             }
         }
     }
