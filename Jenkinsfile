@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'devops2022.azurecr.io/alpine-test'
-        }
-    }
+    agent any {
     
     environment {
     KUBECONFIG = credentials('k8s_config')
@@ -31,4 +27,5 @@ pipeline {
             }
         }
     }
+}
 }
