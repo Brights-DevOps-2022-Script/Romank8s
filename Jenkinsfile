@@ -18,7 +18,7 @@ pipeline {
                 sh 'echo irgendwas'
             }
             }
-        }
+        
 
         stage('notDeploy') {
             steps {
