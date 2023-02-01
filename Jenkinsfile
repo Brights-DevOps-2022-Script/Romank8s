@@ -16,5 +16,19 @@ pipeline {
                 sh "kubectl version --short"
             }
         }
+
+        stage('notBuild') {
+            steps {
+                sh "docker --version"
+                sh "kubectl version --short"
+            }
+        }
+
+        stage('notDeploy') {
+            steps {
+                sh "docker --version"
+                sh "kubectl version --short"
+            }
+        }
     }
 }
