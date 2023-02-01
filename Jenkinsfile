@@ -1,5 +1,5 @@
 pipeline {
-        agent {
+    agent {
         docker {
             image 'devops2022.azurecr.io/alpine-test'
         }
