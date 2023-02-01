@@ -17,9 +17,9 @@ pipeline {
             }
         }
 
-        stage('notBuild') {
+        stage('build') {
             steps {
-                sh "docker build -t devops2022.azurecr.io/nginx:roman98 ."
+                sh 'docker build -t devops2022.azurecr.io/nginx:roman98 .'
             }
         }
 
