@@ -13,9 +13,7 @@ pipeline {
         
         stage('test') {
             steps {
-                sh "docker --version"
-                sh "kubectl version --short"
-                sh 'who'
+                sh 'docker login devops2022.azurecr.io -u "$ACRCreds_USW" -p "$ACRCreds_PSW"'
             }
         }
 
