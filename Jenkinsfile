@@ -17,6 +17,7 @@ pipeline {
         }
         stage('Deploy Nginx') {
             steps {
+                sh 'echo roman'
                 // sh 'kubectl apply -f nginx-namespace.yaml'
                 // sh "kubectl apply -f nginx-deployment.yaml"
                 // sh "kubectl apply -f nginx-service.yaml"
