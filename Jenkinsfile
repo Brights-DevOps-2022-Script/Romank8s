@@ -1,5 +1,5 @@
 pipeline {
-    agent any {
+    agent any 
     
     environment {
         KUBECONFIG = credentials('k8s_config')
@@ -27,5 +27,4 @@ pipeline {
             }
         }
     }
-}
 }
