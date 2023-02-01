@@ -14,10 +14,11 @@ pipeline {
         //}
         stage('Deploy Nginx') {
             steps {
-                sh 'kubectl apply -f nginx-namespace.yaml'
-                sh "kubectl apply -f nginx-deployment.yaml"
-                sh "kubectl apply -f nginx-service.yaml"
-                sh "kubectl get pod -n romank8s"
+                sh 'kubectl version'
+                // sh 'kubectl apply -f nginx-namespace.yaml'
+                // sh "kubectl apply -f nginx-deployment.yaml"
+                // sh "kubectl apply -f nginx-service.yaml"
+                // sh "kubectl get pod -n romank8s"
             }
         }
     }
