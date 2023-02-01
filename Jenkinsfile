@@ -15,7 +15,7 @@ pipeline {
             steps {
                 sh "docker --version"
                 sh "kubectl version --short"
-                sh 'usermod -aG docker $USER'
+                sh 'who'
             }
         }
 
