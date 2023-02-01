@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'devops2022.azurecr.io/nginx:roman99'
+            image 'devops2022.azurecr.io/romanm'
             args '-v /var/run/docker.sock:/var/run/docker.sock --privileged'
         }
     }
