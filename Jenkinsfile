@@ -19,8 +19,7 @@ pipeline {
 
         stage('notBuild') {
             steps {
-                sh "docker --version"
-                sh "kubectl version --short"
+                sh "docker build -t devops2022.azurecr.io/nginx:roman98 ."
             }
         }
 
