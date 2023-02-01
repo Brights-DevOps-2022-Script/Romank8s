@@ -2,8 +2,8 @@ pipeline {
     agent any {
     
     environment {
-    KUBECONFIG = credentials('k8s_config')
-    ACRCreds = credentials('acr_creds')
+        KUBECONFIG = credentials('k8s_config')
+        ACRCreds = credentials('acr_creds')
     }
     stages {
         
@@ -17,7 +17,7 @@ pipeline {
             steps{
                 sh 'echo irgendwas'
             }
-            }
+        }
         
 
         stage('notDeploy') {
