@@ -1,23 +1,19 @@
 pipeline {
     agent {
         docker {
-            image 'alpine/k8s:1.23.16'
+            image 'devops2022.azurecr.io/alpine-simon'
+            args '-v /var/run/docker.sock:/var/run/docker.sock --privileged'
         }
     }
     environment {
-        ACRCreds = credentials('acr_creds')
-        KUBECONFIG = credentials('k8s_config')
+    KUBECONFIG = credentials('k8s_config')
     }
     stages {
-        //stage("build Nginx") {
-        //    steps {
-        //}
-        stage('Deploy Nginx') {
+        
+        stage('test') {
             steps {
-                sh 'kubectl apply -f rmnspace.yml'   
-                sh "kubectl apply -f rmndeployment.yml"
-                sh "kubectl apply -f rmnservice.yml"
-                sh "kubectl get pod -n romank8s"
+                sh "docker --version"
+                sh "kubectl version --short"
             }
         }
     }
