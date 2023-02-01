@@ -14,10 +14,9 @@ pipeline {
         }
 
         stage('build') {
-            agent {
-                docker{
-                    image 'gcr.io/cloud-builder/kubectl'
-                }
+            steps{
+                sh 'echo irgendwas'
+            }
             }
         }
 
