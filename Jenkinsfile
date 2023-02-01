@@ -1,10 +1,6 @@
 pipeline {
-    agent {
-        docker {
-            image 'devops2022.azurecr.io/alpine-simon'
-            args '-v /var/run/docker.sock:/var/run/docker.sock --privileged'
-        }
-    }
+    agent any
+    
     environment {
     KUBECONFIG = credentials('k8s_config')
     ACRCreds = credentials('acr_creds')
@@ -18,8 +14,8 @@ pipeline {
         }
 
         stage('build') {
-            steps {
-                sh 'docker images'
+            agent {
+                image ' gcr.io/cloud-builder/kubectl'
             }
         }
 
