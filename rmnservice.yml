@@ -1,0 +1,13 @@
+Service yaml template:
+apiVersion: v1
+kind: Service
+metadata:
+  name: romank8s-service
+  namespace: romanginx2
+spec:
+  selector:
+    app: romanginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

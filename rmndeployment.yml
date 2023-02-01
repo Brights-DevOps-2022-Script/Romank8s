@@ -1,0 +1,23 @@
+deployment template:
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: romank8s
+  namespace: romank8s
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: romank8s
+  template:
+    metadata:
+      labels:
+        app: romank8s
+    spec:
+      containers:
+      - name: romank8s
+        image: devops2022.azurecr.io/nginx:roman99
+        ports:
+        - containerPort: 80
