@@ -10,13 +10,13 @@ pipeline {
             }
         }
         stage('Image Build') {
-            agent {
-                docker {
+                steps {
                     sh 'docker build -t devops2022.azurecr.io/romanm:test1'
                     sh 'docker push devops2022.azurecr.io/romanm:test1'
 
                 }
             }
+
             environment{
                  KUB_CONF = credentials('k8s_config')
             }
@@ -29,4 +29,4 @@ pipeline {
             }    
         }
     }   
-}
+
