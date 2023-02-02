@@ -11,8 +11,8 @@ pipeline {
         }
         stage('Image Build') {
                 steps {
-                    sh 'docker build -t devops2022.azurecr.io/romanm:test1'
-                    sh 'docker push devops2022.azurecr.io/romanm:test1'
+                    sh 'docker build -t devops2022.azurecr.io/romanm:test3 .'
+                    sh 'docker push devops2022.azurecr.io/romanm:test3'
 
                 }
             }
