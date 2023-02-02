@@ -1,28 +1,30 @@
 pipeline {
-    agent {
-        docker {
-            image 'devops2022.azurecr.io/alpine-test'
-        }
-    }
-    environment {
-        ACRCreds = credentials('acr_creds')
-        KUBECONFIG = credentials('k8s_config')
+    agent any 
+    environment{
+        ACR_CRED = credentials('acr_creds')
     }
     stages {
-        stage("build Nginx") {
-            steps {
-                sh 'docker login devops2022.azurecr.io -u "$ACRCreds_USR" -p "$ACRCreds_PSW"'
-                // sh 'docker build -t devops2022.azurecr.io/nginx:felix-schultes-heureka .'
+        stage('ACR Login') {
+            steps{
+                sh 'docker login devops2022.azurecr.io -u $ACR_CRED_USR -p $ACR_CRED_PSW'
             }
         }
-        stage('Deploy Nginx') {
-            steps {
-                sh 'echo roman'
-                // sh 'kubectl apply -f nginx-namespace.yaml'
-                // sh "kubectl apply -f nginx-deployment.yaml"
-                // sh "kubectl apply -f nginx-service.yaml"
-                // sh "kubectl get pod -n felixheureka"
+        stage('deploy') {
+            agent {
+                docker {
+                    image 'alpine/k8s:1.23.16'
+                }
             }
+            environment{
+                 KUB_CONF = credentials('k8s_config')
+            }
+            steps{
+                //sh 'kubectl --kubeconfig=$KUB_CONF delete namespace pierre-space-second'
+                //sh 'kubectl --kubeconfig=$KUB_CONF create namespace pierre-space-second'
+                sh 'echo $KUB_CONF'
+                sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmndeployment.yml -n rmnk8s'
+                sh 'kubectl --kubeconfig=$KUB_CONF get namespaces'                
+            }    
         }
-    }
+    }   
 }
