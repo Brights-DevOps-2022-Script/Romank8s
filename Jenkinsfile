@@ -26,9 +26,9 @@ pipeline {
                  KUB_CONF = credentials('k8s_config')
             }
             steps{
-                sh 'kubectl --kubeconfig=$KUB_CONF delete namespace romank8s'
-                sh 'kubectl --kubeconfig=$KUB_CONF create namespace romank8s'
-                sh 'echo $KUB_CONF'
+                // sh 'kubectl --kubeconfig=$KUB_CONF delete namespace romank8s'
+                // sh 'kubectl --kubeconfig=$KUB_CONF create namespace romank8s'
+                // sh 'echo $KUB_CONF'
                 sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmnspace.yml -n romank8s'
                 sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmndeployment.yml -n romank8s'
                 // sh 'kubectl --kubeconfig=$KUB_CONF get namespaces'   
