@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: romank8s
-        # image: devops.azurecr.io/romanm
+        image: devops.azurecr.io/romanm
         ports:
         - containerPort: 80
 ---
