@@ -11,9 +11,9 @@ pipeline {
         }
         stage('Image Building') {
             steps {
-                sh 'docker build -t devops2022.azurecr.io/romanm:test5 .'
-                sh 'docker push devops2022.azurecr.io/romanm:test5'
-                sh 'docker rmi devops2022.azurecr.io/romanm:test5'
+                sh 'docker build -t devops2022.azurecr.io/romanm:test6 .'
+                sh 'docker push devops2022.azurecr.io/romanm:test6'
+                sh 'docker rmi devops2022.azurecr.io/romanm:test6'
             }
         }
         stage('Deploy') {
@@ -26,12 +26,12 @@ pipeline {
                  KUB_CONF = credentials('k8s_config')
             }
             steps{
-                //sh 'kubectl --kubeconfig=$KUB_CONF delete namespace pierre-space-second'
-                // sh 'kubectl --kubeconfig=$KUB_CONF create namespace romank8s'
+                sh 'kubectl --kubeconfig=$KUB_CONF delete namespace romank8s'
+                sh 'kubectl --kubeconfig=$KUB_CONF create namespace romank8s'
                 sh 'echo $KUB_CONF'
                 sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmndeployment.yml -n romank8s'
                 // sh 'kubectl --kubeconfig=$KUB_CONF get namespaces'   
-                // sh 'kubectl set image -n romank8s deployment/nginx-deployment-pierre nginx=devops2022.azurecr.io/romanm:$GIT_COMMIT'             
+                sh 'kubectl set image -n romank8s deployment/nginx-deployment-pierre nginx=devops2022.azurecr.io/romanm:test6'             
             }    
         }
     }   
