@@ -31,7 +31,7 @@ pipeline {
                 sh 'echo $KUB_CONF'
                 sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmndeployment.yml -n romank8s'
                 // sh 'kubectl --kubeconfig=$KUB_CONF get namespaces'   
-                // sh 'kubectl set image -n pierre-space-second deployment/nginx-deployment-pierre nginx=devops2022.azurecr.io/romanm:$GIT_COMMIT'             
+                // sh 'kubectl set image -n romank8s deployment/nginx-deployment-pierre nginx=devops2022.azurecr.io/romanm:$GIT_COMMIT'             
             }    
         }
     }   
