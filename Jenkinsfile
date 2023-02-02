@@ -29,9 +29,10 @@ pipeline {
                 sh 'kubectl --kubeconfig=$KUB_CONF delete namespace romank8s'
                 sh 'kubectl --kubeconfig=$KUB_CONF create namespace romank8s'
                 sh 'echo $KUB_CONF'
+                sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmnspace.yml -n romank8s'
                 sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmndeployment.yml -n romank8s'
                 // sh 'kubectl --kubeconfig=$KUB_CONF get namespaces'   
-                sh 'kubectl set image -n romank8s deployment/romank8s nginx=devops2022.azurecr.io/romanm:test6'             
+                sh 'kubectl --kubeconfig=$KUB_CONF set image -n romank8s deployment/romank8s nginx=devops2022.azurecr.io/romanm:test6'             
             }    
         }
     }   
