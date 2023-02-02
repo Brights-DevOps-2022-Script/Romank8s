@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: romank8s
-        image: devops2022.azurecr.io/nginx:roman99
+        image: devops.azurecr.io/pierre/nginx_pierre
         ports:
         - containerPort: 80
 ---
