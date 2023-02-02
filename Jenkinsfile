@@ -22,7 +22,7 @@ pipeline {
                 //sh 'kubectl --kubeconfig=$KUB_CONF delete namespace pierre-space-second'
                 //sh 'kubectl --kubeconfig=$KUB_CONF create namespace pierre-space-second'
                 sh 'echo $KUB_CONF'
-                sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmndeployment.yml -n rmnk8s'
+                sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmndeployment.yml -n romank8s'
                 sh 'kubectl --kubeconfig=$KUB_CONF get namespaces'                
             }    
         }
