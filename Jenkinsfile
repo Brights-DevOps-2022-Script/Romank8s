@@ -11,9 +11,9 @@ pipeline {
         }
         stage('Image Building') {
             steps {
-                sh 'docker build -t devops2022.azurecr.io/pierre_nginx:test4 .'
-                sh 'docker push devops2022.azurecr.io/pierre_nginx:test4'
-                // sh 'docker rmi devops2022.azurecr.io/pierre_nginx:$GIT_COMMIT'
+                sh 'docker build -t devops2022.azurecr.io/romanm:test4 .'
+                sh 'docker push devops2022.azurecr.io/romanm:test4'
+                // sh 'docker rmi devops2022.azurecr.io/romanm:$GIT_COMMIT'
             }
         }
         stage('Deploy') {
@@ -31,7 +31,7 @@ pipeline {
                 sh 'echo $KUB_CONF'
                 sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmndeployment.yml -n romank8s'
                 // sh 'kubectl --kubeconfig=$KUB_CONF get namespaces'   
-                // sh 'kubectl set image -n pierre-space-second deployment/nginx-deployment-pierre nginx=devops2022.azurecr.io/pierre_nginx:$GIT_COMMIT'             
+                // sh 'kubectl set image -n pierre-space-second deployment/nginx-deployment-pierre nginx=devops2022.azurecr.io/romanm:$GIT_COMMIT'             
             }    
         }
     }   
