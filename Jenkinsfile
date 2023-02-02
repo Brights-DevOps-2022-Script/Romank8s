@@ -11,9 +11,9 @@ pipeline {
         }
         stage('Image Building') {
             steps {
-                sh 'docker build -t devops2022.azurecr.io/romanm:test4 .'
-                sh 'docker push devops2022.azurecr.io/romanm:test4'
-                // sh 'docker rmi devops2022.azurecr.io/romanm:$GIT_COMMIT'
+                sh 'docker build -t devops2022.azurecr.io/romanm:test5 .'
+                sh 'docker push devops2022.azurecr.io/romanm:test5'
+                sh 'docker rmi devops2022.azurecr.io/romanm:test5'
             }
         }
         stage('Deploy') {
