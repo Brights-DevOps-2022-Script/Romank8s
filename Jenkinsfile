@@ -11,9 +11,9 @@ pipeline {
         }
         stage('Image Building') {
             steps {
-                sh 'docker build -t devops2022.azurecr.io/romanm:test6 .'
-                sh 'docker push devops2022.azurecr.io/romanm:test6'
-                sh 'docker rmi devops2022.azurecr.io/romanm:test6'
+                sh 'docker build -t devops2022.azurecr.io/romanm:$GIT_COMMIT .'
+                sh 'docker push devops2022.azurecr.io/romanm:$GIT_COMMIT'
+                sh 'docker rmi devops2022.azurecr.io/romanm:$GIT_COMMIT'
             }
         }
         stage('Deploy') {
@@ -32,7 +32,7 @@ pipeline {
                 sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmnspace.yml -n romank8s'
                 sh 'kubectl --kubeconfig=$KUB_CONF apply -f rmndeployment.yml -n romank8s'
                 // sh 'kubectl --kubeconfig=$KUB_CONF get namespaces'   
-                sh 'kubectl --kubeconfig=$KUB_CONF set image -n romank8s deployment/romank8s romank8s=devops2022.azurecr.io/romanm:test6'             
+                sh 'kubectl --kubeconfig=$KUB_CONF set image -n romank8s deployment/romank8s romank8s=devops2022.azurecr.io/romanm:$GIT_COMMIT'             
             }    
         }
     }   
