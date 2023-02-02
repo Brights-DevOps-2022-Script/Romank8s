@@ -9,10 +9,12 @@ pipeline {
                 sh 'docker login devops2022.azurecr.io -u $ACR_CRED_USR -p $ACR_CRED_PSW'
             }
         }
-        stage('deploy') {
+        stage('Image Build') {
             agent {
                 docker {
-                    image 'alpine/k8s:1.23.16'
+                    sh 'docker build -t devops2022.azurecr.io/romanm:test1'
+                    sh 'docker push devops2022.azurecr.io/romanm:test1'
+
                 }
             }
             environment{
